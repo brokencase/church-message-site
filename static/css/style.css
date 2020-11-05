@@ -1,0 +1,132 @@
+a, a:active, a:visited {
+  color: #444;
+}
+
+a:hover {
+  color: #555;
+  text-decoration: none;
+}
+
+.btn {
+  transition: none;
+}
+
+.btn-primary, .btn-primary:visited, .btn-primary:active, .btn-primary:focus, .btn-primary:link {
+  background-color: #25477c;
+  border: #25477c;
+  color: white !IMPORTANT;
+}
+
+.btn-primary:hover {
+  background-color: rgba(37, 71, 124, 0.9);
+}
+
+.sermon-section {
+  padding: 10px 25px;
+  background-color: #fff;
+}
+
+a.sermonnotes {
+  color: #25477c !IMPORTANT;
+  font-weight: bold;
+}
+
+a.sermonnotes:hover {
+  color: #3d3d3d !IMPORTANT;
+}
+
+.uploadStatus {
+  background: #ccccff;
+  font-weight: bold;
+  font-size: 75%;
+  padding: 5px 15px 0px 15px;
+}
+
+.sermonBox {
+  background-color: #fff;
+  border: #25477c solid 1px;
+  padding: 5px 3px;
+  margin: 10px 3px;
+  height: 275px;
+  font-size: .75em;
+}
+
+.sermonImage {
+  width: 100%;
+  height: 130px;
+  background-color: gray;
+  color: black;
+  border: 1px solid #000;
+  display: block;
+  text-align: center;
+}
+
+ul {
+  margin: 0 0 10px 20px; padding: 0;
+}
+
+
+/* The container */
+.checkcontainer {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  text-transform: UPPERCASE;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.checkcontainer input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.checkcontainer:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.checkcontainer input:checked ~ .checkmark {
+  background-color: #25477c;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.checkcontainer input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.checkcontainer .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
