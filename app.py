@@ -1,5 +1,14 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for, redirect
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, validators
+from wtforms.validators import DataRequired, Email
+
+class LoginForm(FlaskForm):
+    user = StringField('username', validators=[Email()])
+    user_password = PasswordField('password', validators=[DataRequired()])
+
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'iwasborninohiobutmyheartisofteninmanyotherplaces'
 
 @app.route('/')
 def index():
@@ -13,9 +22,12 @@ def contact_page():
 def book_page():
     return render_template('resource-parenting.html')
 
-@app.route('/login')
+@app.route('/login', methods=['GET','POST'])
 def login_page():
-    return render_template('user-login.html')
+    form = LoginForm()
+    if form.validate_on_submit():
+        return redirect('/')
+    return render_template('user-login.html', form=form)
 
 if __name__ == '__main__':
     app.run(debug=True)
