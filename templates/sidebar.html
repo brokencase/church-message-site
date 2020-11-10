@@ -1,0 +1,100 @@
+<div class="row">
+    <div class="col-6">
+      <a href="//podcasts.apple.com/us/podcast/fresno-bible-church/id1459002006" target="_blank" data-toggle="tooltip" title="Subscribe on Apple">
+        <img src="{{ url_for('static', filename='/images/podcast-apple.svg') }}" class="w-100" />
+      </a>
+    </div>
+    <div class="col-6">
+      <a href="//open.spotify.com/show/6r74bpPqY2DtAJvLDNeZFH" target="_blank" data-toggle="tooltip" title="Subscribe on Spotify">
+        <img src="{{ url_for('static', filename='/images/podcast-spotify.svg') }}" class="w-100" />
+      </a>
+    </div>
+  </div>
+  <div class="row mt-2 justify-content-center">
+    <div class="col-6">
+      <a href="//www.iheart.com/podcast/256-fresno-bible-church-31151908/" target="_blank" data-toggle="tooltip" title="Subscribe on iHeartRadio">
+        <img src="{{ url_for('static', filename='/images/podcast-iheartradio.png') }}" class="w-100" />
+      </a>
+    </div>
+    <div class="col-6">
+      <a href="//www.google.com/podcasts?feed=aHR0cDovL3d3dy5mcmVzbm9iaWJsZWNodXJjaC5vcmcvZmVlZC5waHA%3D" target="_blank" data-toggle="tooltip" title="Subscribe on Google">
+        <img src="{{ url_for('static', filename='/images/podcast-google.svg') }}" class="w-100" />
+      </a>
+    </div>
+  </div>
+  <div class="row mt-2 justify-content-center">
+    <div class="col-6">
+      <a href='https://play.google.com/music/m/Ieg2ri64j7vjyhhse7s4stomvy4?t=Fresno_Bible_Church&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-Other-global-all-co-prtnr-mu-PartBadge-Mar2515-1' target="_blank">
+        <img src="{{ url_for('static', filename='/images/podcast-google-play.png') }}" class="w-100" />
+      </a>
+    </div>
+  </div>
+  <hr />
+  <form role="form" enctype="multipart/form-data"
+      method="get" action="index.php">
+   <div class="form-group">
+    <label for="sermonsearchtitle">Search Sermons By Title:</label>
+    <input type="text" class="form-control" id="title" name="t" value="" />
+   </div>
+   <div class="form-group">
+    <label for="sermonsearchtitle">Search Sermons By Date:</label>
+    <input type="date" class="form-control" id="date" name="d" value="" />
+   </div>
+  
+   <div class="form-group">
+    <label for="sermonsearchpreacher">Search Sermons By Preacher:</label>
+    <select type="range" class="form-control" id="title" name="p">
+        <option value="" selected></option>
+        <option value='PreacherName'>PreacherName</option>
+    </select>
+   </div>
+     <div class="form-group">
+      <label for="sermonsearchseries">Search Sermons By Series:</label>
+      <select type="range" class="form-control" id="title" name="s">
+            <option value="" selected></option>
+            <option value='SeriesName'>SeriesName</option>
+      </select>
+      <br />
+      <button class="btn btn-primary">Search</button>
+     </div>
+    </form>
+    <hr />
+    <div class="row">
+      <div class="col-12">
+        <h4>Join us!</h4>
+        <p><strong>**COVID19 Announcement**</strong><br>
+          For the time being, our regular ministries are on hold except Sunday morning worship. Please see the current times below for our services. We will update our times once we reopen more of our weekly ministries.
+          <br><br> If you have any questions, feel free to contact us using the contact information provided.
+  
+        </p>
+        <p>
+            <strong>Sunday Services:</strong>
+                      <ul>
+                          <li>Early Worship Service - 8:00 AM</li>
+                          <li>2nd Worship Service - 10:00 AM</li>
+                          <li>Youth Group - 7:00 - 8 PM</li>
+                      </ul>
+            </p>
+  
+        <p>
+          <strong>Wednesday Ministries:</strong>
+          <ul>
+            <li>Prayer Meeting - 7:00 PM</li>
+          </ul>
+        </p>
+
+            <h5>Contact Information</h5>
+            <strong>Church Address</strong>
+            <p>24629 SR 93, Fresno, OH 43824</p>
+  
+        <strong>Mailing Address</strong>
+        <p>PO Box 67, Fresno, OH 43824</p>
+  
+            <strong>Church Phone</strong>
+            <p>(740) 545-7382</p>
+  
+            <strong>Church Email</strong>
+            <p><a href="mailto:contact@fresnobilechurch.org">contact@fresnobiblechurch.org</a></p>
+      </div>
+    </div>
+  

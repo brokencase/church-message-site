@@ -2,6 +2,7 @@ from flask import Flask, render_template, url_for, redirect
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, validators
 from wtforms.validators import DataRequired, Email
+from db_connect import display_recent_sermons
 
 class LoginForm(FlaskForm):
     user = StringField('username', validators=[Email()])
@@ -12,7 +13,8 @@ app.config['SECRET_KEY'] = 'iwasborninohiobutmyheartisofteninmanyotherplaces'
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    sermons = display_recent_sermons(12)
+    return render_template('index.html', sermons=sermons)
 
 @app.route('/contact')
 def contact_page():

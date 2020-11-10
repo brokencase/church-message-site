@@ -2,6 +2,42 @@
 {% block title %}{{ super() }}Home{% endblock %}
 
 {% block body %}
-    <h1>This is my page!</h1>
-    <p>Yes, I'm doing it! Python website baby! Woot Woot!</p>
+<div class="row">
+    <div class="col-12">
+        <h2>Recent Sermons</h2>
+        <hr>
+        <p><strong>Here you can listen to our sermon messages</strong>
+                and download sermon notes to follow along.<br />
+                You can also search for a sermon by title, date, preacher, or series.</p>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-12 col-md-8">
+        {% for sermon in sermons %}
+        <section class="sermon-section">
+            <h4>{{ sermon['Title']}}</h4>
+            <p><strong>Preacher: </strong>{{ sermon['PreacherName'] }} | <strong>Date: </strong>{{ sermon['SermonDate'] }}
+                <br />
+                <strong>Series: </strong> {{ sermon['SeriesTitle'] }}
+            {% if sermon['NotesFile']|length > 0 %}
+            <br /><a href="http://www.fresnobiblechurch.org/sermons/sermons/{{ sermon['NotesFile'] }}" target="_blank" class="sermonnotes">Download Sermon Notes</a>
+            {% endif %}
+            </p>
+
+            <audio controls=controls>
+                <source src="http://www.fresnobiblechurch.org/sermons/sermons/{{ sermon['AudioFile'] }}" type="audio/mpeg" />
+                Your browser does not support our HTML5 media player. <a href="http://www.fresnobiblechurch.org/sermons/sermons/{{ sermon['AudioFile'] }}" target="_blank">Please click here to play.</a>
+            </audio>
+
+        </section>
+        {% endfor %}
+    </div>
+    <div class="col-12 col-md-4">
+        {% include 'sidebar.html' %}
+    </div>
+</div>
+
 {% endblock %}
