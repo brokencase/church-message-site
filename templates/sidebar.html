@@ -30,29 +30,32 @@
     </div>
   </div>
   <hr />
-  <form role="form" enctype="multipart/form-data"
-      method="get" action="index.php">
+  <form role="form" method="post" action="/sermon_search">
    <div class="form-group">
     <label for="sermonsearchtitle">Search Sermons By Title:</label>
-    <input type="text" class="form-control" id="title" name="t" value="" />
+    <input type="text" class="form-control" id="title" name="sermon_title" value="" />
    </div>
    <div class="form-group">
     <label for="sermonsearchtitle">Search Sermons By Date:</label>
-    <input type="date" class="form-control" id="date" name="d" value="" />
+    <input type="date" class="form-control" id="date" name="sermon_date" value="" />
    </div>
   
    <div class="form-group">
     <label for="sermonsearchpreacher">Search Sermons By Preacher:</label>
-    <select type="range" class="form-control" id="title" name="p">
+    <select type="range" class="form-control" id="title" name="sermon_preacher">
         <option value="" selected></option>
-        <option value='PreacherName'>PreacherName</option>
+        {% for preacher in preacher_dropdown %}
+        <option value='{{ preacher["PreacherName"] }}'>{{ preacher["PreacherName"] }}</option>
+        {% endfor %}
     </select>
    </div>
      <div class="form-group">
       <label for="sermonsearchseries">Search Sermons By Series:</label>
-      <select type="range" class="form-control" id="title" name="s">
+      <select type="range" class="form-control" id="title" name="sermon_series">
             <option value="" selected></option>
-            <option value='SeriesName'>SeriesName</option>
+            {% for series in series_dropdown %}
+            <option value="{{ series['SeriesName']}}">{{ series['SeriesName'] }}</option>
+            {% endfor %}
       </select>
       <br />
       <button class="btn btn-primary">Search</button>

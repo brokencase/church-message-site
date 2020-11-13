@@ -17,14 +17,73 @@ def db_init():
 
 def display_recent_sermons(number):
     connection = db_init()
-    cursor = connection.cursor()
-    sql = "SELECT * FROM Sermons WHERE SermonStatus = 1 ORDER BY SermonDate DESC LIMIT %s"
-    cursor.execute(sql, (number))
-    result = cursor.fetchall()
-    connection.commit()
-    cursor.close()
-    connection.close()
+    try:
+        with connection.cursor() as cursor:
+            sql = "SELECT * FROM Sermons WHERE SermonStatus = 1 ORDER BY SermonDate DESC LIMIT %s"
+            cursor.execute(sql, (number))
+            result = cursor.fetchall()
+            connection.commit()
+    finally:
+        cursor.close()
+        connection.close()
     return result 
+
+def display_all_series():
+    connection = db_init()
+    try:
+        with connection.cursor() as cursor:
+            sql = "SELECT * FROM SermonSeries ORDER BY SeriesName"
+            cursor.execute(sql)
+            result = cursor.fetchall()
+            connection.commit()
+    finally:
+        cursor.close()
+        connection.close()
+    return result 
+
+def display_all_preachers():
+    connection = db_init()
+    try:
+        with connection.cursor() as cursor:
+            sql = "SELECT DISTINCT PreacherName FROM Sermons ORDER BY PreacherName"
+            cursor.execute(sql)
+            result = cursor.fetchall()
+            connection.commit()
+    finally:
+        cursor.close()
+        connection.close()
+    return result 
+
+def sermon_search(title,date,preacher,series):
+    if len(date) > 0:
+        sql = f"SELECT * FROM Sermons WHERE SermonStatus = 1 AND SermonDate BETWEEN DATE_ADD('{date}', INTERVAL -8 DAY) AND DATE_ADD('{date}', INTERVAL 8 DAY) ORDER BY SermonDate LIMIT 3"
+    else:
+        sql = f"SELECT * FROM Sermons WHERE SermonStatus = 1 AND (TITLE LIKE '%{title}%' AND PreacherName LIKE '%{preacher}%' AND SeriesTitle LIKE '%{series}%') ORDER BY SermonDate DESC"
+    connection = db_init()
+    try:
+        with connection.cursor() as cursor:
+            print(sql) 
+            cursor.execute(sql)
+            result = cursor.fetchall()
+            connection.commit()
+    finally:
+        cursor.close()
+        connection.close()
+    return result 
+
+def get_sermon_by_id(id):
+    connection = db_init()
+    try:
+        with connection.cursor() as cursor:
+            sql = f"SELECT * FROM Sermons WHERE SermonStatus = 1 AND Id = {id}"
+            print(sql)
+            cursor.execute(sql)
+            result = cursor.fetchone()
+            connection.commit()
+    finally:
+        cursor.close()
+        connection.close()
+    return result
 
 # try:
 #     with connection.cursor() as cursor:
