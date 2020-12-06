@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light mb-2">
+    <div class="container">
+        <a class="navbar-brand" href="{{url_for('index')}}"><img src="{{url_for('static',filename='images/logo.png')}}" width="120" /></a>
+        <button class="navbar-toggler mr-2" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="resourcesDropDownLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Resources
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="resourcesDropDownLink">
+                        <a class="nav-link" href="{{url_for('book_page')}}">Wise Parenting</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('contact')}}">Contact</a>
+                </li>
+                {% if current_user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="resourcesDropDownLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Admin
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="resourcesDropDownLink">
+                        <a class="nav-link" href="{{url_for('register')}}">Register New User</a>
+                        <a class="nav-link" href="#">Edit User</a>
+                        <a class="nav-link" href="#">Sermon Admin</a>
+                        <a class="nav-link" href="#">Series Admin</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="resourcesDropDownLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Sermon Admin
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="resourcesDropDownLink">
+                        <a class="nav-link" href="#">Upload Sermon</a>
+                        <a class="nav-link" href="#">Add Livestream</a>
+                    </div>
+		        </li>
+                {% endif %}
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    {% if current_user.is_anonymous %}
+                    <a class="nav-link btn btn-primary" href="{{url_for('login')}}">Login</a>
+                    {% else %}
+                    <a class="nav-link btn btn-primary" href="{{url_for('logout')}}">Logout</a>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

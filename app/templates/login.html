@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="row justify-content-center">
+    <div class="col-12 col-md-4">
+        <h1 class="text-center">Sign In</h1>
+        <form action="" method="POST" autocomplete="off" novalidate>
+            {{ form.hidden_tag() }}        
+            <div class="form-group row justify-content-center">
+                <div class="col-12 col-4">
+                    {{ form.username(size=32, class="form-control form-control-lg", placeholder="username")}}
+                </div>
+            </div>
+            {% for error in form.username.errors %}
+            <div class="form-group row justify-content-center">
+                <div class="col-12 col-4">
+                    <span style="color: rgb(207, 27, 27);">[{{error}}]</span>
+                </div>
+            </div>
+            {% endfor %}                            
+            <div class="form-group row justify-content-center">
+                <div class="col-12 col-4">
+                {{ form.password(size=32, class="form-control form-control-lg", placeholder="password")}}
+                </div>
+            </div>
+            {% for error in form.password.errors %}
+            <div class="form-group row justify-content-center">
+                <div class="col-12 col-4">
+                    <span style="color: rgb(207, 27, 27);">[{{error}}]</span>
+                </div>
+            </div>
+            {% endfor %}
+            <div class="form-group form-check row justify-content-center">
+                <div class="col-12 col-4">
+                    {{ form.remember_me(class="form-check-input") }} {{ form.remember_me.label(class="form-check-label") }}
+                </div>
+            </div>
+            <div class="form-group row justify-content-center">
+                <div class="col-12 col-4">
+                    {{ form.submit(class="btn btn-primary btn-lg btn-block") }}
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
